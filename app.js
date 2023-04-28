@@ -8,7 +8,7 @@ window.addEventListener("load", initApp);
 function initApp() {
     updatePostsGrid(); // update the grid of posts: get and show all posts
 
-    // event listener
+    // event listeners
     document.querySelector("#btn-create-post").addEventListener("click", showCreatePostDialog);
     document.querySelector("#form-create-post").addEventListener("submit", createPostClicked);
     document.querySelector("#form-update-post").addEventListener("submit", updatePostClicked);
@@ -111,12 +111,8 @@ function showPost(postObject) {
     document.querySelector("#posts").insertAdjacentHTML("beforeend", html); // append html to the DOM - section#posts
 
     // add event listeners to .btn-delete and .btn-update
-    document
-        .querySelector("#posts article:last-child .btn-delete")
-        .addEventListener("click", () => deleteClicked(postObject));
-    document
-        .querySelector("#posts article:last-child .btn-update")
-        .addEventListener("click", () => updateClicked(postObject));
+    document.querySelector("#posts article:last-child .btn-delete").addEventListener("click", () => deleteClicked(postObject));
+    document.querySelector("#posts article:last-child .btn-update").addEventListener("click", () => updateClicked(postObject));
 }
 
 // called when delete button is clicked
@@ -142,12 +138,10 @@ function updateClicked(post) {
 function searchPosts(searchValue) {
     searchValue = searchValue.toLowerCase();
 
-    const results = posts.filter(checkTitle);
-
-    function checkTitle(post) {
+    const results = posts.filter(post => {
         const title = post.title.toLowerCase();
         return title.includes(searchValue);
-    }
+    });
 
     return results;
 }
@@ -211,10 +205,12 @@ function prepareData(dataObject) {
     return array; // return array back to "the caller"
 }
 
+// compare title - used by .sort
 function compareTitle(post1, post2) {
     return post1.title.localeCompare(post2.title);
 }
 
+// compare body - used by .sort
 function compareBody(post1, post2) {
     return post1.body.localeCompare(post2.body);
 }
