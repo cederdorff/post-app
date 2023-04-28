@@ -96,9 +96,23 @@ function showPosts(listOfPosts) {
     }
 }
 
-function showPost(postObject) {
+async function getUser(uid) {
+    const response = await fetch(`${endpoint}/users/${uid}.json`);
+    const user = await response.json();
+    return user;
+}
+
+async function showPost(postObject) {
+    const user = await getUser(postObject.uid);
     const html = /*html*/ `
         <article class="grid-item">
+            <div class="avatar">
+                <img src=${user.image} />
+                <span>
+                    <h3>${user.name}</h3>
+                    <p>${user.title}</p>
+                </span>
+            </div>
             <img src="${postObject.image}" />
             <h3>${postObject.title}</h3>
             <p>${postObject.body}</p>
@@ -143,7 +157,7 @@ function searchPosts(searchValue) {
 
 // Create a new post - HTTP Method: POST
 async function createPost(title, body, image) {
-    const newPost = { title, body, image }; // create new post object
+    const newPost = { title, body, image, uid: "fTs84KRoYw5pRZEWCq2Z" }; // create new post object
     const json = JSON.stringify(newPost); // convert the JS object to JSON string
     // POST fetch request with JSON in the body
     const response = await fetch(`${endpoint}/posts.json`, {
