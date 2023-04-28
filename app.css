@@ -59,6 +59,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
+    z-index: 9;
 }
 
 /* ---------- footer styling ---------- */
@@ -122,6 +123,7 @@ main {
     background-color: var(--white);
     transition: 0.5s;
     animation: fadeIn 0.5s;
+    position: relative;
 }
 
 .grid-item:hover {
@@ -136,6 +138,7 @@ main {
 
 .grid-item p {
     margin: 0.3em 0;
+    padding: 0 0 3em 0;
 }
 
 .grid-item h3:first-letter,
@@ -150,6 +153,10 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1em;
+    position: absolute;
+    bottom: 1.5em;
+    left: 1.5em;
+    right: 1.5em;
 }
 
 .grid-container .btns button {
