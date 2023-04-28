@@ -137,12 +137,7 @@ function updateClicked(post) {
 
 function searchPosts(searchValue) {
     searchValue = searchValue.toLowerCase();
-
-    const results = posts.filter(post => {
-        const title = post.title.toLowerCase();
-        return title.includes(searchValue);
-    });
-
+    const results = posts.filter(post => post.title.toLowerCase().includes(searchValue));
     return results;
 }
 
