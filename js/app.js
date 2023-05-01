@@ -25,6 +25,8 @@ function showCreatePostDialog() {
 }
 
 async function createPostClicked(event) {
+    event.preventDefault();
+
     const form = event.target; // or "this"
     // extract the values from inputs from the form
     const title = form.title.value;
@@ -36,6 +38,10 @@ async function createPostClicked(event) {
         console.log("New post succesfully added to Firebase 🔥");
         form.reset(); // reset the form (clears inputs)
         updatePostsGrid();
+        event.target.parentNode.close(); // the dialog
+        hideErrorMessage();
+    } else {
+        showErrorMessage("Something went wrong. Please, try again!");
     }
 }
 
@@ -149,4 +155,14 @@ function searchPosts(searchValue) {
     searchValue = searchValue.toLowerCase();
     const results = posts.filter(post => post.title.toLowerCase().includes(searchValue));
     return results;
+}
+
+function showErrorMessage(message) {
+    document.querySelector(".error-message").textContent = message;
+    document.querySelector(".error-message").classList.remove("hide");
+}
+
+function hideErrorMessage() {
+    document.querySelector(".error-message").textContent = "";
+    document.querySelector(".error-message").classList.add("hide");
 }
