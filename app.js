@@ -108,10 +108,10 @@ async function showPost(postObject) {
         <article class="grid-item">
             <div class="avatar">
                 <img src=${user.image} />
-                <span>
+                <div>
                     <h3>${user.name}</h3>
                     <p>${user.title}</p>
-                </span>
+                </div>
             </div>
             <img src="${postObject.image}" />
             <h3>${postObject.title}</h3>
