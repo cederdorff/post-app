@@ -242,6 +242,17 @@ select {
     max-width: 350px;
 }
 
+input:invalid {
+    border: 2px solid rgb(255, 121, 121);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 /* ---------- dialog styling ---------- */
 
 dialog {
