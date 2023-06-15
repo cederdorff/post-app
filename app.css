@@ -146,6 +146,14 @@ main {
     text-transform: uppercase;
 }
 
+/* Nesting  */
+/* .grid-item {
+    & h3:first-letter,
+    & p:first-letter {
+        text-transform: uppercase;
+    }
+} */
+
 /* ---------- buttons in grid container ---------- */
 
 .grid-container .btns {
