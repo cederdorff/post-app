@@ -1,5 +1,4 @@
 
-.vscode/settings.json
-.idea/modules.xml
-.idea/post-app.iml
-.idea/vcs.xml
+.vscode
+
+.idea
